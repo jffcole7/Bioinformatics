@@ -157,15 +157,17 @@ with open(fileName) as f:
                     BABA+=1
                     processedNuc=processedNuc+4
             #line = str(chrom)+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
-            if pos/5000000 == blockNum:
-                # print "the current block is ",blockNum
-                # print "the range is ",(blockNum -1)*5000000 +1,"-",pos
+            chrom = row[0]
 
-                block_range = str((blockNum -1)*5000000 +1)+"-"+str(pos)
+            if pos/500000 == blockNum:
+                # print "the current block is ",blockNum
+                # print "the range is ",(blockNum -1)*500000 +1,"-",pos
+
+                block_range = str((blockNum -1)*500000 +1)+"-"+str(pos)
                 #block.append([chrom,block_range,ABBA,BABA])
-                line = str(chrom)+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
+                line_toAppend = str(chrom)+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
                 with open(outName, "a") as myfile:
-                    myfile.write(line)
+                    myfile.write(line_toAppend)
 
                 #print " there have been ",ABBA," ABBA and ",BABA," BABA"
 #
@@ -174,20 +176,20 @@ with open(fileName) as f:
                 BABA=0
             # if chrom_change!=chrom and chrom_change!="":
                 # print " the chromosome has changed from ",chrom_change, " to ",chrom
-                # print "the new block range is ",(blockNum -1)*5000000 +1,"-",pos
+                # print "the new block range is ",(blockNum -1)*500000 +1,"-",pos
                 # blockNum+=1
 #
             #line = str(chrom)+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
 
 # print "the current block is ",blockNum
-# print "the block range is ",(blockNum -1)*5000000 +1,"-",blockNum*5000000
+# print "the block range is ",(blockNum -1)*500000 +1,"-",blockNum*500000
 # print " there have been ",ABBA," ABBA and ",BABA," BABA"
 
 
 #block.append([chrom,block_range,ABBA,BABA])
-line = str(chrom)+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
+line_toAppend = str(chrom)+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
 with open(outName, "a") as myfile:
-    myfile.write(line)
+    myfile.write(line_toAppend)
 #print block
 
 totNuc = 4*numRows
