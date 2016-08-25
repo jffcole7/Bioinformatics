@@ -148,8 +148,8 @@ with open(fileName) as f:
                 #block.append([chrom,block_range,ABBA,BABA])
                 line_toAppend = str(chrom)+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
                 #print row[0],"\t",pos,"\n"
-                 with open(outName, "a") as myfile:
-                     myfile.write(line_toAppend)
+                with open(outName, "a") as myfile:
+                    myfile.write(line_toAppend)
 
                 #print " there have been ",ABBA," ABBA and ",BABA," BABA"
                 #print row
