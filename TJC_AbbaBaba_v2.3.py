@@ -168,7 +168,7 @@ with open(fileName) as f:
                 start_pos = pos
                 #block.append([chrom,block_range,ABBA,BABA])
                 line_toAppend = row[0]+"\t"+block_range+"\t",ABBA,"\t"+str(BABA)+"\n"#
-                newish_line=row[0]+"\t",pos,"\n"
+                print row[0],"\t",pos,"\n"
                 with open(outName, "a") as myfile:
                     myfile.write(newish_line)
 
