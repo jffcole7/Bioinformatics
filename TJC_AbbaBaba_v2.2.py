@@ -173,7 +173,7 @@ with open(fileName) as f:
                     myfile.write(line_toAppend)
 
                 #print " there have been ",ABBA," ABBA and ",BABA," BABA"
-                print chrom, " is the current chromosome"
+                print pos, " is the current position"
                 blockNum+=1
                 ABBA=0
                 BABA=0
