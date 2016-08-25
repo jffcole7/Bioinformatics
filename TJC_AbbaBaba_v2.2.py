@@ -71,6 +71,7 @@ column2="stillthis"
 column3="pleasebedifferent"
 column4="donotshowup"
 line1=True
+start_pos =1
 #abbaMatrix=[]
 #abbaMatrix.append(['chrom','pos','ABBA'])
 chrom = ""
@@ -164,7 +165,8 @@ with open(fileName) as f:
                 # print "the current block is ",blockNum
                 # print "the range is ",(blockNum -1)*500000 +1,"-",pos
 
-                block_range = str((blockNum -1)*500000 +1)+"-"+str(pos)
+                block_range = str(start_pos)+"-"+str(pos)
+                start_pos = pos
                 #block.append([chrom,block_range,ABBA,BABA])
                 line_toAppend = str(row[0])+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
                 with open(outName, "a") as myfile:
