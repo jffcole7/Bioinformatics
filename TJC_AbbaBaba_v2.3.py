@@ -167,10 +167,10 @@ with open(fileName) as f:
                 block_range = str(start_pos)+"-"+str(pos)
                 start_pos = pos
                 #block.append([chrom,block_range,ABBA,BABA])
-                line_toAppend = row[0]+"\t"+block_range+"\t",ABBA,"\t"+str(BABA)+"\n"#
+                line_toAppend = str(chrom)+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
                 print row[0],"\t",pos,"\n"
-                with open(outName, "a") as myfile:
-                    myfile.write(line_toAppend)
+                # with open(outName, "a") as myfile:
+                    # myfile.write(line_toAppend)
 
                 #print " there have been ",ABBA," ABBA and ",BABA," BABA"
                 #print row
@@ -191,9 +191,9 @@ with open(fileName) as f:
 
 #block.append([chrom,block_range,ABBA,BABA])
 line_toAppend = str(chrom)+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
-with open(outName, "a") as myfile:
-    myfile.write(line_toAppend)
-#print block
+# with open(outName, "a") as myfile:
+    # myfile.write(line_toAppend)
+
 
 totNuc = 4*numRows
 percenProcessed = float(processedNuc)/float(totNuc)*100
