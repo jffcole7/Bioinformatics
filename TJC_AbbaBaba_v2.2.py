@@ -77,6 +77,7 @@ chrom = ""
 pos = ""
 #block=[]
 blockNum =1
+row =[]
 #chrom_change=""
 
 #print abbaMatrix
@@ -165,7 +166,7 @@ with open(fileName) as f:
 
                 block_range = str((blockNum -1)*500000 +1)+"-"+str(pos)
                 #block.append([chrom,block_range,ABBA,BABA])
-                line_toAppend = str(chrom)+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
+                line_toAppend = str(row[0])+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
                 with open(outName, "a") as myfile:
                     myfile.write(line_toAppend)
 
