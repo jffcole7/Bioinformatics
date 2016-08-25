@@ -138,9 +138,8 @@ with open(fileName) as f:
             if column == 5:
                 column4 = ValNow
                 if column4==column3:
-                    #print column1+column2+column3+column4+" You will not be goingto space today "
-                    break
                     processedNuc=processedNuc+4
+                    break
                 if column4!=column1 and column4!=column2:
                     #print column1+column2+column3+column4+" There is an extra letter in here "
                     processedNuc=processedNuc+4
@@ -170,7 +169,7 @@ with open(fileName) as f:
                 #block.append([chrom,block_range,ABBA,BABA])
                 line_toAppend = row[0]+"\t"+block_range+"\t",ABBA,"\t"+str(BABA)+"\n"#
                 with open(outName, "a") as myfile:
-                    myfile.write(row[0])
+                    myfile.write(row[0]+"\t",pos)
 
                 #print " there have been ",ABBA," ABBA and ",BABA," BABA"
                 #print row
