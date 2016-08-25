@@ -100,8 +100,10 @@ with open(fileName) as f:
 
 
         for column in range(len(row)):
-            #chrom_change = chrom
+            chrom_change = chrom
             chrom = row[0]
+            if chrom!=chrom_change:
+                print chrom
 
 
             pos = int(float(row [1]))
@@ -168,7 +170,7 @@ with open(fileName) as f:
                 start_pos = pos
                 #block.append([chrom,block_range,ABBA,BABA])
                 line_toAppend = str(chrom)+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
-                print row[0],"\t",pos,"\n"
+                #print row[0],"\t",pos,"\n"
                 # with open(outName, "a") as myfile:
                     # myfile.write(line_toAppend)
 
