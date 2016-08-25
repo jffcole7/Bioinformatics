@@ -136,7 +136,7 @@ with open(fileName) as f:
             #line = str(chrom)+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
 
             if chrom!=chrom_change:
-                print chrom+"\t",pos
+                print row 
             #print row
             if pos/500000 == blockNum:
                 # print "the current block is ",blockNum
