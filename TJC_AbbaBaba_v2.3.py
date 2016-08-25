@@ -102,8 +102,6 @@ with open(fileName) as f:
         for column in range(len(row)):
             chrom_change = chrom
             chrom = row[0]
-            if chrom!=chrom_change:
-                print chrom
 
 
             pos = int(float(row [1]))
@@ -160,6 +158,8 @@ with open(fileName) as f:
                     BABA+=1
                     processedNuc=processedNuc+4
             #line = str(chrom)+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
+            if chrom!=chrom_change:
+                print chrom
 
             #print row
             if pos/500000 == blockNum:
