@@ -37,26 +37,6 @@ with open(outName,'wb') as out:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 numRows = 0
 #totNuc =4*numRows
 processedNuc =0
@@ -92,10 +72,6 @@ with open(fileName) as f:
 
 
         numRows +=1
-
-
-
-
 
 
 
@@ -159,13 +135,13 @@ with open(fileName) as f:
                     processedNuc=processedNuc+4
             #line = str(chrom)+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
 
-
+            if chrom!=chrom_change:
+                print chrom+"\t",pos
             #print row
             if pos/500000 == blockNum:
                 # print "the current block is ",blockNum
                 # print "the range is ",(blockNum -1)*500000 +1,"-",pos
-                if chrom!=chrom_change:
-                    print chrom
+
                 block_range = str(start_pos)+"-"+str(pos)
                 start_pos = pos
                 #block.append([chrom,block_range,ABBA,BABA])
