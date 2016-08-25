@@ -170,7 +170,7 @@ with open(fileName) as f:
                 line_toAppend = row[0]+"\t"+block_range+"\t",ABBA,"\t"+str(BABA)+"\n"#
                 print row[0],"\t",pos,"\n"
                 with open(outName, "a") as myfile:
-                    myfile.write(newish_line)
+                    myfile.write(line_toAppend)
 
                 #print " there have been ",ABBA," ABBA and ",BABA," BABA"
                 #print row
