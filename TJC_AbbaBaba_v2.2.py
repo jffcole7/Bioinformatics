@@ -160,7 +160,7 @@ with open(fileName) as f:
                     processedNuc=processedNuc+4
             #line = str(chrom)+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
 
-
+            print row 
             if pos/500000 == blockNum:
                 # print "the current block is ",blockNum
                 # print "the range is ",(blockNum -1)*500000 +1,"-",pos
@@ -173,7 +173,7 @@ with open(fileName) as f:
                     myfile.write(line_toAppend)
 
                 #print " there have been ",ABBA," ABBA and ",BABA," BABA"
-                print row
+                #print row
                 blockNum+=1
                 ABBA=0
                 BABA=0
