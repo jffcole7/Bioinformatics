@@ -173,7 +173,7 @@ with open(fileName) as f:
                     myfile.write(line_toAppend)
 
                 #print " there have been ",ABBA," ABBA and ",BABA," BABA"
-                print pos, " is the current position"
+                print row
                 blockNum+=1
                 ABBA=0
                 BABA=0
