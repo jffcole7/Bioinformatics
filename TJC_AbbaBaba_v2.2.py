@@ -159,7 +159,7 @@ with open(fileName) as f:
                     BABA+=1
                     processedNuc=processedNuc+4
             #line = str(chrom)+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
-            chrom = row[0]
+
 
             if pos/500000 == blockNum:
                 # print "the current block is ",blockNum
@@ -168,12 +168,12 @@ with open(fileName) as f:
                 block_range = str(start_pos)+"-"+str(pos)
                 start_pos = pos
                 #block.append([chrom,block_range,ABBA,BABA])
-                line_toAppend = str(row[0])+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
+                line_toAppend = row[0]+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
                 with open(outName, "a") as myfile:
                     myfile.write(line_toAppend)
 
                 #print " there have been ",ABBA," ABBA and ",BABA," BABA"
-#
+                print chrom, " is the current chromosome"
                 blockNum+=1
                 ABBA=0
                 BABA=0
