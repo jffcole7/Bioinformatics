@@ -4,10 +4,18 @@ a =''.join(random.choice('ATCG') for _ in range(random.randint(500,10000)))
 count=0
 print "chrom\tpos\tP1\tP2\tP3\tO"
 chrom = 1
-while count <499:
+chrom_change=chrom
+while count <2300:
+
+    #if chrom !=chrom_change:
     count=count +1
-    if count%10==0:
+    if random.randint(1,100)==random.randint(50,800):
+        chrom_change=chrom
         chrom+=1
+    if chrom_change!=chrom:
+        count=1
+        chrom_change=chrom
+
 
 
 
