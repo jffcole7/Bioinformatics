@@ -142,6 +142,12 @@ with open(fileName) as f:
             if chrom!=chrom_change:
                 blockNum=1
                 print "the new bloc will start at position",start_pos
+                block_range = str(start_pos)+"-"+str(prev_pos)
+                line_toAppend = str(chrom)+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
+                print line_toAppend
+
+
+
                 print "******************\nThe chromosomejust changed from chromosome"+chrom_change+ "and position",prev_pos," to chromosome "+chrom+" and position ", pos," on the new chromosome\n************************"
                 start_pos=pos
             prev_pos=pos
