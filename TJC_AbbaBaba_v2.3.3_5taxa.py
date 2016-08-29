@@ -153,6 +153,68 @@ with open(fileName) as f:
                     #print alleles + " will definitely not be biallalelic"
                     break
 
+                if column5== column1 and column5 == column2 and column5 == column3 and  column5 == column4:
+                    AAAAA+=1
+                    #print column1+column2+column3+column4+column5 + " is AAAAA 1"
+
+                if column5== column1 and column5 == column2 and column5 == column3 and  column5 != column4:
+                    AAABA+=1
+                    #print column1+column2+column3+column4+column5 + " is AAABA 2"
+                if column5== column1 and column5 == column2 and column5 != column3 and  column5 == column4:
+                    AABAA+=1
+                    #print column1+column2+column3+column4+column5 + "is AABAA 3"
+                if column5== column1 and column5 == column2 and column5 != column3 and  column5 != column4:
+                    AABBA+=1
+                    #print column1+column2+column3+column4+column5 + "is AABBA 4"
+
+
+
+                if column5== column1 and column5 != column2 and column5 == column3 and  column5 == column4:
+                    ABAAA+=1
+                    #print column1+column2+column3+column4+column5 + " is ABAAA 5"
+                if column5== column1 and column5 != column2 and column5 == column3 and  column5 != column4:
+                    ABABA+=1
+                    #print column1+column2+column3+column4+column5+ " is ABABA 6"
+                if column5== column1 and column5 != column2 and column5 != column3 and  column5 == column4:
+                    ABBAA+=1
+                    #print column1+column2+column3+column4+column5 + " is ABBAA 7"
+                if column5== column1 and column5 != column2 and column5 != column3 and  column5 != column4:
+                    ABBBA+=1
+                    #print column1+column2+column3+column4+column5+ " is ABBBA 8"
+
+
+
+
+                if column5!= column1 and column5 == column2 and column5 == column3 and  column5 == column4:
+                    BAAAA+=1
+                    #print column1+column2+column3+column4+column5 + " is BAAAA 9"
+                if column5!= column1 and column5 == column2 and column5 == column3 and  column5 != column4:
+                    BAABA+=1
+                    #print column1+column2+column3+column4+column5 + " is BAABA 10"
+                if column5!= column1 and column5 == column2 and column5 != column3 and  column5 == column4:
+                    BABAA+=1
+                    #print column1+column2+column3+column4+column5 + " is BABAA 11"
+                if column5!= column1 and column5 == column2 and column5 != column3 and  column5 != column4:
+                    BABBA+=1
+                    #print column1+column2+column3+column4+column5 + " is BABBA 12"
+
+
+
+
+                if column5!= column1 and column5 != column2 and column5 == column3 and  column5 == column4:
+                    BBAAA+=1
+                    #print column1+column2+column3+column4+column5 + " is BBAAA 13"
+                if column5!= column1 and column5 != column2 and column5 == column3 and  column5 != column4:
+                    BBABA+=1
+                    #print column1+column2+column3+column4+column5 + " is BBABA 14"
+                if column5!= column1 and column5 != column2 and column5 != column3 and  column5 == column4:
+                    BBBAA+=1
+                    #print column1+column2+column3+column4+column5 + " is BBBAA 15"
+                if column5!= column1 and column5 != column2 and column5 != column3 and  column5 != column4:
+                    BBBBA+=1
+                    #print column1+column2+column3+column4+column5 + " is BBBBA 16"
+
+
 
 
 
