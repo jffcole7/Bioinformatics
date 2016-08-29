@@ -25,7 +25,7 @@ else:
 with open(outName,'wb') as out:
     out.write("chrom\tblockRange\tABBA\tBABA\n")
 if "-w" in sys.argv:
-    windowSize = getOptionValue("-w")
+    windowSize = float(getOptionValue("-w"))
 else:
     print "\nplease specify window size using -w <window_size>\n"
 
