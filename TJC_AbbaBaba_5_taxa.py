@@ -22,21 +22,23 @@ if "-i" in sys.argv:
 else:
     print "\nplease specify input file name using -i <file_name> \n"
     sys.exit()
-#
-#
-# if "-o" in sys.argv:
-  # outName = getOptionValue("-o")
-# else:
-  # print "\nplease specify output file name using -o <file_name> \n"
-  # sys.exit()
-#
-# with open(outName,'wb') as out:
-    # out.write("chrom\tblockRange\tABBA\tBABA\n")
-#
+
+
+if "-o" in sys.argv:
+  outName = getOptionValue("-o")
+else:
+  print "\nplease specify output file name using -o <file_name> \n"
+  sys.exit()
+
+with open(outName,'wb') as out:
+    out.write("chrom\tblockRange\tAAAAA\tAAABA\tAABAA\tAABBA\tABAAA\tABABA\tABBAA\tABBBA\tBAAAA\tBAABA\tBABAA\tBABBA\tBBAAA\tBBABA\tBBBAA\tBBBBA\n")
+
+
+
 
 numRows = 0
 processedNuc =0
-windowSize=500
+windowSize=500000
 ABBA_bool = True
 BABA_bool = True
 
@@ -214,22 +216,30 @@ with open(fileName) as f:
                 if prev_pos < windowSize:
                     block_range = str(pos)+"-"+str(prev_pos)
                     #line_toAppend = str(chrom_change)+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
-                    line_toAppend= str(chrom_change)+"\t" +str(block_range)+"\t"+str(AAAAA)+"\t"+ str(AAABA)+"\t"+ str(AABAA)+"\t"+ str(AABBA)+"\t"+ str(ABAAA)+"\t"+ str(ABABA)+"\t"+ str(ABBAA)+"\t"+ str(ABBBA)+"\t" + str(BAAAA) +"\t"+str(BAABA) +"\t"+ str(BABAA) +"\t"+str(BABBA) +"\t"+str(BBAAA) +"\t"+str(BBABA) +"\t"+str(BBBAA) +"\t"+str(BBBBA)
+                    line_toAppend= str(chrom_change)+"\t" +str(block_range)+"\t"+str(AAAAA)+"\t"+ str(AAABA)+"\t"+ str(AABAA)+"\t"+ str(AABBA)+"\t"+ str(ABAAA)+"\t"+ str(ABABA)+"\t"+ str(ABBAA)+"\t"+ str(ABBBA)+"\t" + str(BAAAA) +"\t"+str(BAABA) +"\t"+ str(BABAA) +"\t"+str(BABBA) +"\t"+str(BBAAA) +"\t"+str(BBABA) +"\t"+str(BBBAA) +"\t"+str(BBBBA)+"\n"
 
                 else:
 
                     block_range = str(start_pos)+"-"+str(prev_pos)
 
                     #line_toAppend = str(chrom_change)+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
-                    line_toAppend= str(chrom_change)+"\t" +str(block_range)+"\t"+str(AAAAA)+"\t"+ str(AAABA)+"\t"+ str(AABAA)+"\t"+ str(AABBA)+"\t"+ str(ABAAA)+"\t"+ str(ABABA)+"\t"+ str(ABBAA)+"\t"+ str(ABBBA)+"\t" + str(BAAAA) +"\t"+str(BAABA) +"\t"+ str(BABAA) +"\t"+str(BABBA) +"\t"+str(BBAAA) +"\t"+str(BBABA) +"\t"+str(BBBAA) +"\t"+str(BBBBA)
+                    line_toAppend= str(chrom_change)+"\t" +str(block_range)+"\t"+str(AAAAA)+"\t"+ str(AAABA)+"\t"+ str(AABAA)+"\t"+ str(AABBA)+"\t"+ str(ABAAA)+"\t"+ str(ABABA)+"\t"+ str(ABBAA)+"\t"+ str(ABBBA)+"\t" + str(BAAAA) +"\t"+str(BAABA) +"\t"+ str(BABAA) +"\t"+str(BABBA) +"\t"+str(BBAAA) +"\t"+str(BBABA) +"\t"+str(BBBAA) +"\t"+str(BBBBA)+"\n"
 
 
                 start_pos=pos
-                print line_toAppend
-                # with open(outName, "a") as myfile:
-                    # myfile.write(line_toAppend)
+                #print line_toAppend
+
+
+
+                with open(outName, "a") as myfile:
+                    myfile.write(line_toAppend)
+
+
+
+
                 # ABBA=0
                 # BABA=0
+
                 AAAAA=0
                 AAABA=0
                 AABAA=0
@@ -257,12 +267,12 @@ with open(fileName) as f:
 
                 block_range = str(start_pos)+"-"+str(pos)
                 start_pos = pos
-                line_toAppend= str(chrom_change)+"\t" +str(block_range)+"\t"+str(AAAAA)+"\t"+ str(AAABA)+"\t"+ str(AABAA)+"\t"+ str(AABBA)+"\t"+ str(ABAAA)+"\t"+ str(ABABA)+"\t"+ str(ABBAA)+"\t"+ str(ABBBA)+"\t" + str(BAAAA) +"\t"+str(BAABA) +"\t"+ str(BABAA) +"\t"+str(BABBA) +"\t"+str(BBAAA) +"\t"+str(BBABA) +"\t"+str(BBBAA) +"\t"+str(BBBBA)
-                print line_toAppend
+                line_toAppend= str(chrom_change)+"\t" +str(block_range)+"\t"+str(AAAAA)+"\t"+ str(AAABA)+"\t"+ str(AABAA)+"\t"+ str(AABBA)+"\t"+ str(ABAAA)+"\t"+ str(ABABA)+"\t"+ str(ABBAA)+"\t"+ str(ABBBA)+"\t" + str(BAAAA) +"\t"+str(BAABA) +"\t"+ str(BABAA) +"\t"+str(BABBA) +"\t"+str(BBAAA) +"\t"+str(BBABA) +"\t"+str(BBBAA) +"\t"+str(BBBBA)+"\n"
+                #print line_toAppend
                 #line_toAppend = str(chrom)+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
-
-                # with open(outName, "a") as myfile:
-                    # myfile.write(line_toAppend)
+#
+                with open(outName, "a") as myfile:
+                    myfile.write(line_toAppend)
 #
 
                 blockNum+=1
@@ -288,13 +298,13 @@ with open(fileName) as f:
 
 block_range = str(start_pos)+"-"+str(pos)
 #line_toAppend = str(chrom)+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
-line_toAppend= str(chrom_change)+"\t" +str(block_range)+"\t"+str(AAAAA)+"\t"+ str(AAABA)+"\t"+ str(AABAA)+"\t"+ str(AABBA)+"\t"+ str(ABAAA)+"\t"+ str(ABABA)+"\t"+ str(ABBAA)+"\t"+ str(ABBBA)+"\t" + str(BAAAA) +"\t"+str(BAABA) +"\t"+ str(BABAA) +"\t"+str(BABBA) +"\t"+str(BBAAA) +"\t"+str(BBABA) +"\t"+str(BBBAA) +"\t"+str(BBBBA)
+line_toAppend= str(chrom_change)+"\t" +str(block_range)+"\t"+str(AAAAA)+"\t"+ str(AAABA)+"\t"+ str(AABAA)+"\t"+ str(AABBA)+"\t"+ str(ABAAA)+"\t"+ str(ABABA)+"\t"+ str(ABBAA)+"\t"+ str(ABBBA)+"\t" + str(BAAAA) +"\t"+str(BAABA) +"\t"+ str(BABAA) +"\t"+str(BABBA) +"\t"+str(BBAAA) +"\t"+str(BBABA) +"\t"+str(BBBAA) +"\t"+str(BBBBA)+"\n"
 
-print line_toAppend 
+# print line_toAppend
 #
 #
-# with open(outName, "a") as myfile:
-    # myfile.write(line_toAppend)
+with open(outName, "a") as myfile:
+    myfile.write(line_toAppend)
 #
 
 
@@ -306,5 +316,5 @@ percenProcessed = float(processedNuc)/float(totNuc)*100
 #print "there were ",totNuc, " nucleotides to be processed"
 #print "we only had to process ", processedNuc
 #print "That means we only had to look at ", percenProcessed,"% of the nucleotides!"
-print "AAAAA\tAAABA\tAABAA\tAABBA\tABAAA\tABABA\tABBAA\tABBBA\tBAAAA\tBAABA\tBABAA\tBABBA\tBBAAA\tBBABA\tBBBAA\tBBBBA"
-print AAAAA,"\t", AAABA,"\t", AABAA,"\t", AABBA,"\t", ABAAA,"\t", ABABA,"\t", ABBAA,"\t", ABBBA,"\t", BAAAA ,"\t",BAABA ,"\t",BABAA ,"\t",BABBA ,"\t",BBAAA ,"\t",BBABA ,"\t",BBBAA ,"\t",BBBBA
+#print "chrom\tpos\tAAAAA\tAAABA\tAABAA\tAABBA\tABAAA\tABABA\tABBAA\tABBBA\tBAAAA\tBAABA\tBABAA\tBABBA\tBBAAA\tBBABA\tBBBAA\tBBBBA"
+#print AAAAA,"\t", AAABA,"\t", AABAA,"\t", AABBA,"\t", ABAAA,"\t", ABABA,"\t", ABBAA,"\t", ABBBA,"\t", BAAAA ,"\t",BAABA ,"\t",BABAA ,"\t",BABBA ,"\t",BBAAA ,"\t",BBABA ,"\t",BBBAA ,"\t",BBBBA
