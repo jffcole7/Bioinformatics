@@ -130,7 +130,7 @@ with open(fileName) as f:
 
                 alleles=column1+column2+column3
                 if unique_count(alleles)>2:
-                    print alleles + " will not be biallalelic"
+                    #print alleles + " will not be biallalelic"
                     break
 
 
