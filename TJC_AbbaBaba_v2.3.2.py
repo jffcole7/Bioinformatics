@@ -151,7 +151,7 @@ with open(fileName) as f:
                 print "******************\nThe chromosomejust changed from chromosome"+chrom_change+ "and position",prev_pos," to chromosome "+chrom+" and position ", pos," on the new chromosome\n************************"
                 start_pos=pos
                 ABBA=0
-                BABBA=0
+                BABA=0
             prev_pos=pos
                 #print row
             #print row
