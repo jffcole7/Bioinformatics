@@ -58,7 +58,7 @@ start_pos =1
 prev_pos=start_pos
 #abbaMatrix=[]
 #abbaMatrix.append(['chrom','pos','ABBA'])
-chrom = ""
+chrom = "1"
 pos = ""
 #block=[]
 blockNum =1
