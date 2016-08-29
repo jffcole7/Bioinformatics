@@ -55,6 +55,7 @@ column3="pleasebedifferent"
 column4="donotshowup"
 line1=True
 start_pos =1
+prev_pos=start_pos
 #abbaMatrix=[]
 #abbaMatrix.append(['chrom','pos','ABBA'])
 chrom = ""
@@ -140,6 +141,8 @@ with open(fileName) as f:
 
             if chrom!=chrom_change:
                 blockNum=1
+                print "******************\nThe chromosomejust changed from chromosome"+chrom+ "and position",prev_pos," to chromosome "+chrom_change+" and position ", pos," on the new chromosome\n************************"
+            prev_pos=pos
                 #print row
             #print row
             if pos/500000 == blockNum:
