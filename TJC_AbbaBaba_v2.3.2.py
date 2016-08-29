@@ -142,6 +142,7 @@ with open(fileName) as f:
             if chrom!=chrom_change:
                 blockNum=1
                 print "******************\nThe chromosomejust changed from chromosome"+chrom_change+ "and position",prev_pos," to chromosome "+chrom+" and position ", pos," on the new chromosome\n************************"
+                start_pos=pos 
             prev_pos=pos
                 #print row
             #print row
