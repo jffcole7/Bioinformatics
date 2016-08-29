@@ -24,11 +24,15 @@ else:
 
 with open(outName,'wb') as out:
     out.write("chrom\tblockRange\tABBA\tBABA\n")
+if "-w" in sys.argv:
+    windowSize = getOptionValue("-w")
+else:
+    print "\nplease specify window size using -w <window_size>\n"
 
 
 numRows = 0
 processedNuc =0
-windowSize=500
+#windowSize=500000
 ABBA_bool = True
 BABA_bool = True
 ABBA=0
