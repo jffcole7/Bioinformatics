@@ -43,7 +43,7 @@ fasta_sequences = SeqIO.parse(open(fasta_file),'fasta')
 for id in range(len(wanted)):
     for seq in fasta_sequences:
         #print wanted[id]+seq.id
-
+        1
 
         # if wanted[id] in seq.id:
             # print seq
