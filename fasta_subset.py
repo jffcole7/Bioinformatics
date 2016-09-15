@@ -39,10 +39,17 @@ with open(wanted_file) as f:
 
 
 fasta_sequences = SeqIO.parse(open(fasta_file),'fasta')
-for seq in fasta_sequences:
-    #print wanted[id] +" "+ seq.id
-    for id in range(len(wanted)):
-        print wanted[id]+" " +seq.id 
+with open(result_file, "w") as f:
+    for seq in fasta_sequences:
+        #print wanted[id] +" "+ seq.id
+        for id in range(len(wanted)):
+
+
+            #print wanted[id]+" " +seq.id
+            if wanted[id] in seq.id:
+                SeqIO.write([seq], f, "fasta")
+
+
 
     # for seq in fasta_sequences:
         # print wanted[id] +" "+ seq.id
