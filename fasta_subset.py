@@ -42,7 +42,7 @@ fasta_sequences = SeqIO.parse(open(fasta_file),'fasta')
 for seq in fasta_sequences:
     #print wanted[id] +" "+ seq.id
     for id in range(len(wanted)):
-        print wanted[id]+" " seq.id 
+        print wanted[id]+" " +seq.id 
 
     # for seq in fasta_sequences:
         # print wanted[id] +" "+ seq.id
