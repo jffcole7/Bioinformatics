@@ -24,9 +24,10 @@ with open(index_file) as f:
         line = line.strip()
         if line != "":
             index_array.append(line)
-print index_array
+#print index_array
 with open(go_file) as f:
     for line in f:
         row = line.strip()
+        print row[0]
         if row[0] in index_array:
             print line
