@@ -9,7 +9,7 @@ while count <2300:
 
     #if chrom !=chrom_change:
     count=count +1
-    if random.randint(1,100)==random.randint(50,800):
+    if random.randint(1,75)==random.randint(50,800):
         chrom_change=chrom
         chrom+=1
     if chrom_change!=chrom:
@@ -19,7 +19,7 @@ while count <2300:
 
 
 
-    print chrom,"\t",count,"\t"+random.choice('ATCGATCGN') +"\t"+random.choice('ATCGATCGN')+"\t"+random.choice('ATCGATCGN')+"\t"+random.choice('ATCGATCGN')
+    print chrom,"\t",count,"\t"+random.choice('ATCGATCGN') +"\t"+random.choice('ATCGATCGN')+"\t"+random.choice('ATCGATCGN')+"\t"+random.choice('ATCGATCGN')+"\t"+random.choice('ATCGATCGN')
 # print len(a)
 # print "Will this show up on my github account?"
 # print "I added this today"
