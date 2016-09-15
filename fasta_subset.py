@@ -30,7 +30,7 @@ with open(wanted_file) as f:
         line = line.strip()
         if line != "":
             wanted.append(line)
-print wanted
+#print wanted
 
             #
             # print "this line was added"
@@ -41,6 +41,7 @@ print wanted
 fasta_sequences = SeqIO.parse(open(fasta_file),'fasta')
 
 for id in range(len(wanted)):
+    print wanted[id]
     for seq in fasta_sequences:
         #print wanted[id]+seq.id
         1
