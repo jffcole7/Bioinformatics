@@ -21,13 +21,13 @@ index_array = []
 
 with open(index_file) as f:
     for line in f:
-        line = line.strip()
+        line = line.split()
         if line != "":
             index_array.append(line)
 #print index_array
 with open(go_file) as f:
     for line in f:
-        row = line.strip()
-        print row[0]
+        row = line.split()
+        #print row[0]
         if row[0] in index_array:
             print line
