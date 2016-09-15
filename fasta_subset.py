@@ -24,21 +24,33 @@ else:
     sys.exit()
 
 
-wanted = set()
+wanted = []
 with open(wanted_file) as f:
     for line in f:
         line = line.strip()
         if line != "":
-            wanted.add(line)
+            wanted.append(line)
 
             #
             # print "this line was added"
         # else:
 
 
+
 fasta_sequences = SeqIO.parse(open(fasta_file),'fasta')
-with open(result_file, "w") as f:
-    for seq in fasta_sequences:
-        if seq.id in wanted:
-            SeqIO.write([seq], f, "fasta")
-            
+
+for id in range(len(wanted)):
+    for seq in fasta_sequences
+        if id in seq.id:
+            print seq 
+
+#
+# with open(result_file, "w") as f:
+    #
+            #
+    # for seq in fasta_sequences:
+        # if seq.id in wanted:
+            # SeqIO.write([seq], f, "fasta")
+        # else:
+                #
+            #
