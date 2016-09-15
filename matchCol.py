@@ -27,6 +27,6 @@ with open(index_file) as f:
 
 with open(go_file) as f:
     for line in f:
-        row = line.strip:
+        row = line.strip
         if row[0] in index_array:
-            print line 
+            print line
