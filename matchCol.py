@@ -24,7 +24,7 @@ with open(index_file) as f:
         line = line.strip()
         if line != "":
             index_array.append(line)
-
+print index_array
 with open(go_file) as f:
     for line in f:
         row = line.strip()
