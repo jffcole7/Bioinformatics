@@ -30,6 +30,7 @@ with open(wanted_file) as f:
         line = line.strip()
         if line != "":
             wanted.append(line)
+print wanted 
 
             #
             # print "this line was added"
