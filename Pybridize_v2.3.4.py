@@ -473,3 +473,11 @@ print pop4Array
 print pop4
 
 print "(((((((((())))))))))"
+
+"""
+ro2071	ro531	ro533	ro546	chi553	chi560	chi564	chi565	tiP86	tiP313
+tiP84	tiP57	am216	am160	am48	am293	par371	meP18097	meP18038	meP1
+meF13435	meF9315	meF9316	meF9317	ag108	ag572	ag112	ag569	hec273	eth67	ser202 ro2071
+par371	meP18097	meF9317	ag108	ag572 chi565	tiP86 hec273	eth67	ser202
+
+"""
