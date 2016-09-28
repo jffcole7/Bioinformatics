@@ -1,4 +1,4 @@
-#fasta_file = [">a","CGGCATGCTAGCGCATGC","CATGCTAGCTGACTGACGTACGTACG",">b","AGGCATGCTAGCGCATGC","ACGTGCGATCGTAGCGATGATGCACG","ACAGCTAGCGTCATGCA",">c","AGGCATGCTAGCGCATGC"]
+import sys
 def getOptionValue(option):
     optionPos = [i for i, j in enumerate(sys.argv) if j == option][0]
     optionValue = sys.argv[optionPos + 1]
@@ -18,8 +18,7 @@ DoOnce=True
 with open(fileName) as f:
 
     for line in f:
-
-
+        line = line.strip()
 
         header_bool=False
         sequence_bool = False
@@ -34,6 +33,7 @@ with open(fileName) as f:
             elif switch == 1:
                 if DoOnce:
                     print header1,"len:"+str(seq_length)
+
                     print sequence
                     DoOnce=False
 
