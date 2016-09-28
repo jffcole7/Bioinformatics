@@ -14,7 +14,7 @@ switch =0
 DoOnce=True
 
 
-#for line in range(len(fasta_file)):
+#2for line in range(len(fasta_file)):c
 with open(fileName) as f:
 
     for line in f:
