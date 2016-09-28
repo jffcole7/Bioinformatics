@@ -36,6 +36,12 @@ else:
 #
 #
 
+def unique_count(thing):
+
+    uniq_char_string=''.join(set(thing))
+    uniq_char_count = len(uniq_char_string)
+    return uniq_char_count
+
 
 
 
@@ -46,8 +52,15 @@ processedNuc =0
 
 ABBA_bool = True
 BABA_bool = True
+
+AABA=0
+ABAA=0
 ABBA=0
+BAAA=0
 BABA=0
+BBAA=0
+BBBA=0
+
 ValNow=""
 column1="same"
 column2="stillthis"
@@ -63,8 +76,9 @@ pos = ""
 #block=[]
 blockNum =1
 row =[]
+alleles=""
 #chrom_change=""
-
+print "chrom\tpos\tAABA\tABAA\tABBA\tBAAA\tBABA\tBBAA\tBBBA"
 #print abbaMatrix
 with open(fileName) as f:
     for line in f:
@@ -95,63 +109,69 @@ with open(fileName) as f:
                 column1 = ValNow
             if column == 3:
                 column2 = ValNow
-                if column2 == column1:
 
-                    #print column1+column2 +" are the same thing"
-                    processedNuc=processedNuc+2
-                    break
+
+
 
 
 
             if column == 4:
                 column3 = ValNow
-                if column3 != column1 and column3 != column2:
-                    #print column1+column2+column3+"is not biallelic"
-                    processedNuc = processedNuc+3
+                alleles=column1+column2+column3
+                if unique_count(alleles)>2:
                     break
 
-                if column3 == column2 and column3 != column1:
-                    BABA_bool = False
 
-                else:
-                    ABBA_bool = False
             if column == 5:
                 column4 = ValNow
-                if column4==column3:
-                    processedNuc=processedNuc+4
-                    break
-                if column4!=column1 and column4!=column2:
-                    #print column1+column2+column3+column4+" There is an extra letter in here "
-                    processedNuc=processedNuc+4
+                alleles=column1+column2+column3+column4
+                if unique_count(alleles)>2:
                     break
 
-                if column4 == column1:
-                    #print column1+column2+column3+column4+" This is ABBA!!!!! chrom ="+chrom+" pos =",pos
-                    #abbaMatrix.append([chrom,pos,1])
-
+                #print column1+column2
+                if column4 == column1 and column4==column2 and column4 != column3:
+                    AABA+=1
+                    #print alleles + " is AABA"
+                if column4 == column1 and column4!=column2 and column4 == column3:
+                    ABAA+=1
+                    #print alleles + " is ABAA"
+                if column4 == column1 and column4!=column2 and column4 != column3:
                     ABBA+=1
-                    processedNuc=processedNuc+4
-                else:
-                    #print column1+column2+column3+column4+" This is BABA!!!!! chrom="+chrom+" pos =",pos
-                    #abbaMatrix.append([chrom,pos,0])
+                    #print alleles + " is ABBA"
 
+                if column4 != column1 and column4==column2 and column4 == column3:
+                    BAAA+=1
+                    #print alleles + " is BAAA"
+                if column4 != column1 and column4==column2 and column4 != column3:
                     BABA+=1
-                    processedNuc=processedNuc+4
-            #line = str(chrom)+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
+                    #print alleles + " is BABA"
+                if column4 != column1 and column4!=column2 and column4 == column3:
+                    BBAA+=1
+                    #print alleles + " is BBAA"
+                if column4 != column1 and column4!=column2 and column4 != column3:
+                    BBBA+=1
+                    #print alleles + " is BBBA"
+
+
 
             if chrom!=chrom_change:
                 blockNum=1
                 print "the new bloc will start at position",start_pos
                 block_range = str(start_pos)+"-"+str(prev_pos)
-                line_toAppend = str(chrom_change)+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
+                line_toAppend = str(chrom_change)+"\t"+str(block_range)+"\t"+str(AABA)+"\t"+ str(ABAA)+ "\t"+str(ABBA)+ "\t"+str(BAAA)+ "\t"+str(BABA)+ "\t"+str(BBAA)+"\t"+ str(BBBA)+"\n"
                 print line_toAppend
 
 
 
                 print "******************\nThe chromosomejust changed from chromosome"+chrom_change+ "and position",prev_pos," to chromosome "+chrom+" and position ", pos," on the new chromosome\n************************"
                 start_pos=pos
+                AABA=0
+                ABAA=0
                 ABBA=0
+                BAAA=0
                 BABA=0
+                BBAA=0
+                BBBA=0
             prev_pos=pos
                 #print row
             #print row
@@ -162,7 +182,7 @@ with open(fileName) as f:
                 block_range = str(start_pos)+"-"+str(pos)
                 start_pos = pos
                 #block.append([chrom,block_range,ABBA,BABA])
-                line_toAppend = str(chrom)+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
+                line_toAppend = str(chrom)+"\t"+str(block_range)+"\t"+str(AABA)+ "\t"+str(ABAA)+"\t"+ str(ABBA)+"\t"+ str(BAAA)+ "\t"+str(BABA)+"\t"+ str(BBAA)+"\t"+ str(BBBA)+"\n"
                 print line_toAppend
                 #print row[0],"\t",pos,"\n"
 
@@ -175,8 +195,13 @@ with open(fileName) as f:
                 #print " there have been ",ABBA," ABBA and ",BABA," BABA"
                 #print row
                 blockNum+=1
+                AABA=0
+                ABAA=0
                 ABBA=0
+                BAAA=0
                 BABA=0
+                BBAA=0
+                BBBA=0
             # if chrom_change!=chrom and chrom_change!="":
                 # print " the chromosome has changed from ",chrom_change, " to ",chrom
                 # print "the new block range is ",(blockNum -1)*500000 +1,"-",pos

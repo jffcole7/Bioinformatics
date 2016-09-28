@@ -5,7 +5,7 @@ count=0
 print "chrom\tpos\tP1\tP2\tP3\tO"
 chrom = 1
 chrom_change=chrom
-while count <2300:
+while count <5500:
 
     #if chrom !=chrom_change:
     count=count +1
