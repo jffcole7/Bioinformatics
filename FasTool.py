@@ -12,6 +12,7 @@ else:
 header=""
 switch =0
 DoOnce=True
+seqType=""
 
 
 #2for line in range(len(fasta_file)):c
@@ -32,13 +33,27 @@ with open(fileName) as f:
                 switch = 1
             elif switch == 1:
                 if DoOnce:
-                    print header1,"len:"+str(seq_length)
 
+                    firstNuc = sequence[0]
+                    LastNuc = sequence[-1]
+                    if firstNuc=="M" and LastNuc=="*":
+                        seqType= "complete"
+                    else:
+                        seqType="incomplete"
+
+                    print header1,"len:"+str(seq_length),"type:"+seqType
                     print sequence
                     DoOnce=False
 
                 try:
-                    print old_header,"len:"+str(seq_length)
+                    firstNuc = sequence[0]
+                    LastNuc = sequence[-1]
+                    if firstNuc=="M" and LastNuc=="*":
+                        seqType= "complete"
+                    else:
+                        seqType="incomplete"
+
+                    print old_header,"len:"+str(seq_length),"type:"+seqType
                     print sequence
                 except:
                     0
@@ -52,6 +67,15 @@ with open(fileName) as f:
             seq_length+=len(line)
             sequence+=line
 
+firstNuc = sequence[0]
+#print firstNuc
 
-print header,"len:"+str(seq_length)
+LastNuc = sequence[-1]
+#print LastNuc
+if firstNuc=="M" and LastNuc=="*":
+    seqType= "complete"
+else:
+    seqType="incomplete"
+
+print header,"len:"+str(seq_length),"type:"+seqType
 print sequence
