@@ -77,7 +77,7 @@ with open(fileName) as f:
                     if CysMotifOnly:
                         if cysCount(sequence)>4:
 
-                            print cysMotif(sequence)
+                            print cysCount(sequence),cysMotif(sequence)
                     else:
 
                         print header1,"len:"+str(seq_length),"type:"+seqType,
@@ -95,7 +95,7 @@ with open(fileName) as f:
                     if CysMotifOnly:
                         if cysCount(sequence)>4:
 
-                            print cysMotif(sequence)
+                            print cysCount(sequence),cysMotif(sequence)
                     else:
                         print old_header,"len:"+str(seq_length),"type:"+seqType,"cysteine:"+cysCount(sequence)
                         print sequence
@@ -124,7 +124,7 @@ else:
 if CysMotifOnly:
     if cysCount(sequence)>4:
 
-        print cysMotif(sequence)
+        print cysCount(sequence),cysMotif(sequence)
 else:
     print header,"len:"+str(seq_length),"type:"+seqType
     print sequence
