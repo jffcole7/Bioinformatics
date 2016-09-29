@@ -43,6 +43,10 @@ def cysMotif(sequence):
     motif+="C"
     motif= motif[5:len(motif)]
     return motif
+if "-cys" in sys.argv:
+    CysMotifOnly=True
+else:
+    CysMotifOnly=False
 
 #2for line in range(len(fasta_file)):c
 with open(fileName) as f:
@@ -70,8 +74,12 @@ with open(fileName) as f:
                     else:
                         seqType="incomplete"
                     #first sequence
-                    print header1,"len:"+str(seq_length),"type:"+seqType,
-                    print sequence
+                    if CysMotifOnly:
+                        print cysMotif(sequence)
+                    else:
+
+                        print header1,"len:"+str(seq_length),"type:"+seqType,
+                        print sequence
                     DoOnce=False
 
                 try:
@@ -82,8 +90,11 @@ with open(fileName) as f:
                     else:
                         seqType="incomplete"
                     #middle sequence
-                    print old_header,"len:"+str(seq_length),"type:"+seqType,"cysteine:"+cysCount(sequence)
-                    print sequence
+                    if CysMotifOnly:
+                        print cysMotif(sequence)
+                    else:
+                        print old_header,"len:"+str(seq_length),"type:"+seqType,"cysteine:"+cysCount(sequence)
+                        print sequence
                 except:
                     0
 
@@ -106,5 +117,8 @@ if firstNuc=="M" and LastNuc=="*":
 else:
     seqType="incomplete"
 #last sequence
-print header,"len:"+str(seq_length),"type:"+seqType
-print sequence
+if CysMotifOnly:
+    print cysMotif(sequence)
+else:
+    print header,"len:"+str(seq_length),"type:"+seqType
+    print sequence
