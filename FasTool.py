@@ -75,7 +75,7 @@ with open(fileName) as f:
                         seqType="incomplete"
                     #first sequence
                     if CysMotifOnly:
-                        if cysCount(sequence)>4:
+                        if cysCount(sequence)>3:
 
                             print cysCount(sequence),cysMotif(sequence)
                     else:
@@ -93,7 +93,7 @@ with open(fileName) as f:
                         seqType="incomplete"
                     #middle sequence
                     if CysMotifOnly:
-                        if cysCount(sequence)>4:
+                        if cysCount(sequence)>3:
 
                             print cysCount(sequence),cysMotif(sequence)
                     else:
@@ -122,7 +122,7 @@ else:
     seqType="incomplete"
 #last sequence
 if CysMotifOnly:
-    if cysCount(sequence)>4:
+    if cysCount(sequence)>3:
 
         print cysCount(sequence),cysMotif(sequence)
 else:
