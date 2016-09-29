@@ -75,7 +75,9 @@ with open(fileName) as f:
                         seqType="incomplete"
                     #first sequence
                     if CysMotifOnly:
-                        print cysMotif(sequence)
+                        if cysCount(sequence)>4:
+
+                            print cysMotif(sequence)
                     else:
 
                         print header1,"len:"+str(seq_length),"type:"+seqType,
@@ -91,7 +93,9 @@ with open(fileName) as f:
                         seqType="incomplete"
                     #middle sequence
                     if CysMotifOnly:
-                        print cysMotif(sequence)
+                        if cysCount(sequence)>4:
+
+                            print cysMotif(sequence)
                     else:
                         print old_header,"len:"+str(seq_length),"type:"+seqType,"cysteine:"+cysCount(sequence)
                         print sequence
@@ -118,7 +122,9 @@ else:
     seqType="incomplete"
 #last sequence
 if CysMotifOnly:
-    print cysMotif(sequence)
+    if cysCount(sequence)>4:
+
+        print cysMotif(sequence)
 else:
     print header,"len:"+str(seq_length),"type:"+seqType
     print sequence
