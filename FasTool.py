@@ -13,6 +13,7 @@ header=""
 switch =0
 DoOnce=True
 seqType=""
+<<<<<<< HEAD
 Ccount=0
 text =""
 Ccount = 0
@@ -27,6 +28,42 @@ def CysCount(sequence):
     Ccount = 0
 
 
+=======
+def cysCount(sequence):
+    cysCount=0
+    for i in range(len(sequence)):
+        if sequence[i]=="C":
+            cysCount+=1
+    return cysCount
+
+def cysMotif(sequence):
+    NumCys = cysCount(sequence)
+    BeginCysGapCount=False
+    NumCysChange=False
+    CysGap=-1
+    motif=""
+    for i in range(len(sequence)):
+        if BeginCysGapCount:
+            CysGap+=1
+        if sequence[i]=="C":
+            #print "C"
+            motif+="C-"
+            BeginCysGapCount = True
+            NumCys = NumCys-1
+            NumCysChange=True
+        if NumCysChange:
+            #print CysGap
+            motif+=str(CysGap)+"-"
+            CysGap=-1
+            NumCysChange=False
+    motif+="C"
+    motif= motif[5:len(motif)]
+    return motif
+if "-cys" in sys.argv:
+    CysMotifOnly=True
+else:
+    CysMotifOnly=False
+>>>>>>> 363b46bbac46b61859fe02016687a22e3f9bb237
 
 #2for line in range(len(fasta_file)):c
 with open(fileName) as f:
@@ -53,10 +90,21 @@ with open(fileName) as f:
                         seqType= "complete"
                     else:
                         seqType="incomplete"
+                    #first sequence
+                    if CysMotifOnly:
+                        if cysCount(sequence)>3:
 
+                            print cysCount(sequence),cysMotif(sequence), header1
+                    else:
+
+<<<<<<< HEAD
                     #print header1,"len:"+str(seq_length),"type:"+seqType
                     #print sequence
                     print CysCount(sequence)
+=======
+                        print header1,"len:"+str(seq_length),"type:"+seqType,
+                        print sequence
+>>>>>>> 363b46bbac46b61859fe02016687a22e3f9bb237
                     DoOnce=False
 
                 try:
@@ -66,10 +114,20 @@ with open(fileName) as f:
                         seqType= "complete"
                     else:
                         seqType="incomplete"
+                    #middle sequence
+                    if CysMotifOnly:
+                        if cysCount(sequence)>3:
 
+<<<<<<< HEAD
                     #print old_header,"len:"+str(seq_length),"type:"+seqType
                     #print sequence
                     print CysCount(sequence)
+=======
+                            print cysCount(sequence),cysMotif(sequence),header
+                    else:
+                        print old_header,"len:"+str(seq_length),"type:"+seqType,"cysteine:"+cysCount(sequence)
+                        print sequence
+>>>>>>> 363b46bbac46b61859fe02016687a22e3f9bb237
                 except:
                     0
 
@@ -91,6 +149,11 @@ if firstNuc=="M" and LastNuc=="*":
     seqType= "complete"
 else:
     seqType="incomplete"
+#last sequence
+if CysMotifOnly:
+    if cysCount(sequence)>3:
 
-print header,"len:"+str(seq_length),"type:"+seqType
-print sequence
+        print cysCount(sequence),cysMotif(sequence),header
+else:
+    print header,"len:"+str(seq_length),"type:"+seqType
+    print sequence
