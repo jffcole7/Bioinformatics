@@ -16,4 +16,4 @@ transcriptAwise <- read.table("Transcript.awise.txt", header=F)
  completeAwise <- read.table("complete.awise.txt", header=F)
  names(completeAwise) <- c("seq","len")
  names(completeTransDecod) <- c("len","seq")
-#
+##
