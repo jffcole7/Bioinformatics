@@ -47,6 +47,7 @@ if "-cys" in sys.argv:
     CysMotifOnly=True
 else:
     CysMotifOnly=False
+    # a comment 
 
 #2for line in range(len(fasta_file)):c
 with open(fileName) as f:
