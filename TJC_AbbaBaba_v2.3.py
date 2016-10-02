@@ -40,7 +40,7 @@ with open(outName,'wb') as out:
 numRows = 0
 #totNuc =4*numRows
 processedNuc =0
-
+windowSize=500
 ABBA_bool = True
 BABA_bool = True
 ABBA=0
@@ -137,11 +137,12 @@ with open(fileName) as f:
 
             if chrom!=chrom_change:
                 blockNum=1
+                start_pos=pos
                 #print row
             #print row
-            if pos/500000 == blockNum:
+            if pos/windowSize == blockNum:
                 # print "the current block is ",blockNum
-                # print "the range is ",(blockNum -1)*500000 +1,"-",pos
+                # print "the range is ",(blockNum -1)*windowSize +1,"-",pos
 
                 block_range = str(start_pos)+"-"+str(pos)
                 start_pos = pos
@@ -158,13 +159,13 @@ with open(fileName) as f:
                 BABA=0
             # if chrom_change!=chrom and chrom_change!="":
                 # print " the chromosome has changed from ",chrom_change, " to ",chrom
-                # print "the new block range is ",(blockNum -1)*500000 +1,"-",pos
+                # print "the new block range is ",(blockNum -1)*windowSize +1,"-",pos
                 # blockNum+=1
 #
             #line = str(chrom)+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
 
 # print "the current block is ",blockNum
-# print "the block range is ",(blockNum -1)*500000 +1,"-",blockNum*500000
+# print "the block range is ",(blockNum -1)*windowSize +1,"-",blockNum*windowSize
 # print " there have been ",ABBA," ABBA and ",BABA," BABA"
 
 

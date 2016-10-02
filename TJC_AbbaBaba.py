@@ -12,11 +12,41 @@ def getOptionValue(option):
     return optionValue
 
 
+
+
+
+
 if "-i" in sys.argv:
     fileName = getOptionValue("-i")
 else:
     print "\nplease specify input file name using -i <file_name> \n"
     sys.exit()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 numRows = 0
 #totNuc =4*numRows
@@ -33,14 +63,15 @@ column3="pleasebedifferent"
 column4="donotshowup"
 line1=True
 
-
 with open(fileName) as f:
     for line in f:
+        row = line.split()
         if line1:
             line1=False
+
             continue
 
-        row = line.split()
+
         numRows +=1
 
 

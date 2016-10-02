@@ -56,7 +56,7 @@ for row in range(len(calls_table)):
             break
         ValNow = calls_table[row][column]
         if ValNow=="N":
-            print "This row has an N"
+            #print "This row has an N"
             #ABBA = False
             #BABA = False
             processedNuc=processedNuc+column +1
@@ -68,7 +68,7 @@ for row in range(len(calls_table)):
             if column2 == column1:
                 #ABBA ==False
                 #BABA == False
-                print column1+column2 +" are the same thing"
+                #print column1+column2 +" are the same thing"
                 processedNuc=processedNuc+2
                 break
 
@@ -77,7 +77,7 @@ for row in range(len(calls_table)):
         if column == 2:
             column3 = ValNow
             if column3 != column1 and column3 != column2:
-                print column1+column2+column3+"is not biallelic"
+                #print column1+column2+column3+"is not biallelic"
                 processedNuc = processedNuc+3
                 break
 
@@ -91,11 +91,11 @@ for row in range(len(calls_table)):
         if column == 3:
             column4 = ValNow
             if column4==column3:
-                print column1+column2+column3+column4+" You will not be goingto space today "
+                #print column1+column2+column3+column4+" You will not be goingto space today "
                 break
                 processedNuc=processedNuc+4
             if column4!=column1 and column4!=column2:
-                print column1+column2+column3+column4+" There is an extra letter in here "
+                #print column1+column2+column3+column4+" There is an extra letter in here "
                 processedNuc=processedNuc+4
                 break
 

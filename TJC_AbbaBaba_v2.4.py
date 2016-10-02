@@ -23,18 +23,20 @@ else:
     sys.exit()
 
 
-    #
-# if "-o" in sys.argv:
-  # outName = getOptionValue("-o")
+if "-o" in sys.argv:
+  outName = getOptionValue("-o")
   #out = open(outName, "w")
-# else:
-  # print "\nplease specify output file name using -o <file_name> \n"
-  # sys.exit()
+else:
+  print "\nplease specify output file name using -o <file_name> \n"
+  sys.exit()
 #
-# with open(outName,'wb') as out:
-        # out.write("chrom\tblockRange\tABBA\tBABA\n")
+  #
 #
+with open(outName,'wb') as out:
+    out.write("chrom\tblockRange\tABBA\tBABA\n")
+
 #
+
 
 
 
@@ -43,7 +45,7 @@ else:
 numRows = 0
 #totNuc =4*numRows
 processedNuc =0
-
+windowSize=500
 ABBA_bool = True
 BABA_bool = True
 ABBA=0
@@ -55,11 +57,10 @@ column3="pleasebedifferent"
 column4="donotshowup"
 line1=True
 start_pos =1
-prev_pos=start_pos
 #abbaMatrix=[]
 #abbaMatrix.append(['chrom','pos','ABBA'])
 chrom = "1"
-pos = ""
+pos = 1
 #block=[]
 blockNum =1
 row =[]
@@ -83,7 +84,7 @@ with open(fileName) as f:
             chrom_change = chrom
             chrom = row[0]
 
-
+            prev_pos= pos
             pos = int(float(row [1]))
             ValNow = row[column]
             if ValNow=="N":
@@ -141,36 +142,37 @@ with open(fileName) as f:
 
             if chrom!=chrom_change:
                 blockNum=1
-                print "the new bloc will start at position",start_pos
-                block_range = str(start_pos)+"-"+str(prev_pos)
-                line_toAppend = str(chrom_change)+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
-                print line_toAppend
+                #print " the chromosome changed from",chrom_change, "to",chrom, "at position ",prev_pos,"the new chromosome position is ", pos
+                if prev_pos < windowSize:
+                    block_range = str(pos)+"-"+str(prev_pos)
+                    line_toAppend = str(chrom_change)+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
+                else:
 
+                    block_range = str(start_pos)+"-"+str(prev_pos)
 
-
-                print "******************\nThe chromosomejust changed from chromosome"+chrom_change+ "and position",prev_pos," to chromosome "+chrom+" and position ", pos," on the new chromosome\n************************"
-                start_pos=pos
+                    line_toAppend = str(chrom_change)+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
+                #print line_toAppend
+                with open(outName, "a") as myfile:
+                    myfile.write(line_toAppend)
                 ABBA=0
                 BABA=0
-            prev_pos=pos
                 #print row
             #print row
-            if pos/500 == blockNum:
+            if pos/windowSize == blockNum:
                 # print "the current block is ",blockNum
-                # print "the range is ",(blockNum -1)*500000 +1,"-",pos
+                # print "the range is ",(blockNum -1)*windowSize +1,"-",pos
 
                 block_range = str(start_pos)+"-"+str(pos)
                 start_pos = pos
                 #block.append([chrom,block_range,ABBA,BABA])
                 line_toAppend = str(chrom)+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
-                print line_toAppend
+                #print line_toAppend
                 #print row[0],"\t",pos,"\n"
+                with open(outName, "a") as myfile:
+                    myfile.write(line_toAppend)
 
-                #
-                # with open(outName, "a") as myfile:
-                    # myfile.write(line_toAppend)
-#
-                    #
+
+
 
                 #print " there have been ",ABBA," ABBA and ",BABA," BABA"
                 #print row
@@ -179,24 +181,23 @@ with open(fileName) as f:
                 BABA=0
             # if chrom_change!=chrom and chrom_change!="":
                 # print " the chromosome has changed from ",chrom_change, " to ",chrom
-                # print "the new block range is ",(blockNum -1)*500000 +1,"-",pos
+                # print "the new block range is ",(blockNum -1)*windowSize +1,"-",pos
                 # blockNum+=1
 #
             #line = str(chrom)+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
 
 # print "the current block is ",blockNum
-# print "the block range is ",(blockNum -1)*500000 +1,"-",blockNum*500000
+# print "the block range is ",(blockNum -1)*windowSize +1,"-",blockNum*windowSize
 # print " there have been ",ABBA," ABBA and ",BABA," BABA"
 
 
 #block.append([chrom,block_range,ABBA,BABA])
+block_range = str(start_pos)+"-"+str(pos)
 line_toAppend = str(chrom)+"\t"+str(block_range)+"\t"+str(ABBA)+"\t"+str(BABA)+"\n"
+#print line_toAppend
+with open(outName, "a") as myfile:
+    myfile.write(line_toAppend)
 
-
-#
-# with open(outName, "a") as myfile:
-    # myfile.write(line_toAppend)
-#
 
 totNuc = 4*numRows
 percenProcessed = float(processedNuc)/float(totNuc)*100
