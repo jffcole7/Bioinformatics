@@ -13,6 +13,22 @@ header=""
 switch =0
 DoOnce=True
 seqType=""
+<<<<<<< HEAD
+Ccount=0
+text =""
+Ccount = 0
+def CysCount(sequence):
+    global Ccount
+    text = sequence
+    for i in range(len(text)):
+        if text[i] == "C":
+            Ccount+=1
+    Ccount = Ccount/float(len(sequence))*1000
+    return Ccount
+    Ccount = 0
+
+
+=======
 def cysCount(sequence):
     cysCount=0
     for i in range(len(sequence)):
@@ -47,7 +63,11 @@ if "-cys" in sys.argv:
     CysMotifOnly=True
 else:
     CysMotifOnly=False
+<<<<<<< HEAD
     # a comment 
+=======
+>>>>>>> 363b46bbac46b61859fe02016687a22e3f9bb237
+>>>>>>> c3933112e77984ec4ca877ed18ff6948cf6a2fdc
 
 #2for line in range(len(fasta_file)):c
 with open(fileName) as f:
@@ -81,8 +101,14 @@ with open(fileName) as f:
                             print cysCount(sequence),cysMotif(sequence), header1
                     else:
 
+<<<<<<< HEAD
+                    #print header1,"len:"+str(seq_length),"type:"+seqType
+                    #print sequence
+                    print CysCount(sequence)
+=======
                         print header1,"len:"+str(seq_length),"type:"+seqType,
                         print sequence
+>>>>>>> 363b46bbac46b61859fe02016687a22e3f9bb237
                     DoOnce=False
 
                 try:
@@ -96,10 +122,16 @@ with open(fileName) as f:
                     if CysMotifOnly:
                         if cysCount(sequence)>3:
 
+<<<<<<< HEAD
+                    #print old_header,"len:"+str(seq_length),"type:"+seqType
+                    #print sequence
+                    print CysCount(sequence)
+=======
                             print cysCount(sequence),cysMotif(sequence),header
                     else:
                         print old_header,"len:"+str(seq_length),"type:"+seqType,"cysteine:"+cysCount(sequence)
                         print sequence
+>>>>>>> 363b46bbac46b61859fe02016687a22e3f9bb237
                 except:
                     0
 
