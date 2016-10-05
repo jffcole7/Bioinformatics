@@ -19,15 +19,16 @@ else:
 with open(inputFile) as f:
     for line in f:
         print line
-        #
-        # current_value = f[line]
-        # if prev_value==current_value:
-        #
-        #     print prev_value,current_value," are the same: 0"
-        # if prev_value>current_value:
-        #     if prev_value=="nothing":
-        #         print current_value, " is smaller than ", prev_value, " : 0"
-        #     else:
-        #
-        #         print current_value, " is smaller than ", prev_value, " :",prev_value
-        # prev_value= current_value
+
+
+        current_value = line
+        if prev_value==current_value:
+
+            print prev_value,current_value," are the same: 0"
+        if prev_value>current_value:
+            if prev_value=="nothing":
+                print current_value, " is smaller than ", prev_value, " : 0"
+            else:
+
+                print current_value, " is smaller than ", prev_value, " :",prev_value
+        prev_value= current_value
