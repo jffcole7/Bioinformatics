@@ -21,7 +21,7 @@ with open(inputFile) as f:
         #print line
 
 
-        current_value = line.split()
+        current_value = line.split()[0]
         if prev_value==current_value:
 
             print prev_value,current_value," are the same: 0"
