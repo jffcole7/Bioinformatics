@@ -18,7 +18,7 @@ else:
 
 with open(inputFile) as f:
     for line in f:
-        print line
+        #print line
 
 
         current_value = line
