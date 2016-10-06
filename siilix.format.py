@@ -22,4 +22,5 @@ with open(inputFile) as f:
         for i in range(len(row)):
             #if len(row)>14:
             print "FAM"+str(familyNumber),row[i]
-        familyNumber+=1
+
+            familyNumber+=1
