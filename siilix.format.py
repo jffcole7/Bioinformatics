@@ -20,6 +20,6 @@ with open(inputFile) as f:
 
         row = line.split()
         for i in range(len(row)):
-            if len(row)>14:
-                print "FAM"+str(familyNumber),row[i]
+            #if len(row)>14:
+            print "FAM"+str(familyNumber),row[i]
         familyNumber+=1
