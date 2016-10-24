@@ -10,6 +10,9 @@
     # 7.5 I may also visualize those using R
 # 8. Then I will do paml and MEME stuff to them
 
+
+
+# Step 2
 for f in $*
 do
 filename=$(basename "$f")
@@ -57,6 +60,7 @@ grep -c ">" Trinity.fasta.transdecoder.pep
 grep -c ">" longestIsoform.Trinity.fasta
 rm tmp.txt
 
+# step 3 and 4
 sed -ie  "s/>/>$sampleID/g" $sampleID.longestIsoform.fasta
 
 done
@@ -67,29 +71,29 @@ cat *longestIsoform* > All.samples.fasta
 
 
 
-
-
-
-
-cat Trinity.fasta.transdecoder.pep |grep ">" |sed -e 's/>//g' > headers_of_interest.txt
-
-cat headers_of_interest.txt |awk '{print $1,$5}'|cut -d':' -f1,3,8|awk -F':' '{print $2,$3}'|awk -F'|' '{print $1,$2 }'>preppedHeader.txt
-
-echo 'transcripts<-read.table("preppedHeader.txt")'>tmp.R
-echo 'aa <- transcripts[order(transcripts$V1, -abs(transcripts$V3) ), ]'>> tmp.R
-echo 'write.table( aa[ !duplicated(aa$V1), ] ,file="longestIsoformID.txt",row.names=F,col.names=F,quote=F)'>>tmp.R
-# this does the same thing but a one-liner
-#printf 'transcripts<-read.table("preppedHeader.txt")transcripts<-read.table("preppedHeader.txt")\n aa <- transcripts[order(transcripts$V1, -abs(transcripts$V3) ), ] \n write.table( aa[ !duplicated(aa$V1), ] ,file="longestIsoformID.txt",row.names=F,col.names=F,quote=F)' >tmp.R
-
-
-Rscript tmp.R
-wc -l headers_of_interest.txt longestIsoformID.txt
-rm tmp.R
-
-awk '{print $1"|"$2}' longestIsoformID.txt > tmp.txt
-
-python /media/BigRAID/JeffTemp/Bioinformatics/FasTool_v2.2.py -i Trinity.fasta.transdecoder.pep -o longestIsoform.Trinity.fasta -id tmp.txt
-
-grep -c ">" Trinity.fasta.transdecoder.pep
-grep -c ">" longestIsoform.Trinity.fasta
-rm tmp.txt
+#
+#
+#
+#
+# cat Trinity.fasta.transdecoder.pep |grep ">" |sed -e 's/>//g' > headers_of_interest.txt
+#
+# cat headers_of_interest.txt |awk '{print $1,$5}'|cut -d':' -f1,3,8|awk -F':' '{print $2,$3}'|awk -F'|' '{print $1,$2 }'>preppedHeader.txt
+#
+# echo 'transcripts<-read.table("preppedHeader.txt")'>tmp.R
+# echo 'aa <- transcripts[order(transcripts$V1, -abs(transcripts$V3) ), ]'>> tmp.R
+# echo 'write.table( aa[ !duplicated(aa$V1), ] ,file="longestIsoformID.txt",row.names=F,col.names=F,quote=F)'>>tmp.R
+# # this does the same thing but a one-liner
+# #printf 'transcripts<-read.table("preppedHeader.txt")transcripts<-read.table("preppedHeader.txt")\n aa <- transcripts[order(transcripts$V1, -abs(transcripts$V3) ), ] \n write.table( aa[ !duplicated(aa$V1), ] ,file="longestIsoformID.txt",row.names=F,col.names=F,quote=F)' >tmp.R
+#
+#
+# Rscript tmp.R
+# wc -l headers_of_interest.txt longestIsoformID.txt
+# rm tmp.R
+#
+# awk '{print $1"|"$2}' longestIsoformID.txt > tmp.txt
+#
+# python /media/BigRAID/JeffTemp/Bioinformatics/FasTool_v2.2.py -i Trinity.fasta.transdecoder.pep -o longestIsoform.Trinity.fasta -id tmp.txt
+#
+# grep -c ">" Trinity.fasta.transdecoder.pep
+# grep -c ">" longestIsoform.Trinity.fasta
+# rm tmp.txt
