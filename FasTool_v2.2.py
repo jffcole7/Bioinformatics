@@ -100,11 +100,12 @@ def aspairs(file):
             elif subset_bool:
                 for id in range(len(wanted)):
                     if wanted[id] in ensembl_id:
+                        print ensembl_id
                         with open(outName,"a") as out:
                             out.write(ensembl_id)
                         with open(outName,"a") as out:
                             out.write(sequence)
-
+                        print sequence
 
 
                     # print line_toAppend
