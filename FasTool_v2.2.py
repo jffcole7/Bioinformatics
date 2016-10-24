@@ -106,7 +106,7 @@ def aspairs(file):
 
                         with open(outName,"a") as out:
                              out.write(ensembl_id)
-                             out.write(sequence)
+                             out.write(sequence+"\n")
                         # with open(outName,"a") as out:
                         #     out.write(sequence)
 
