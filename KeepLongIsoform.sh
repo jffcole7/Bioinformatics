@@ -29,11 +29,11 @@ for f in $*
 do
 if [ "$uniqueFilenames" !=   "1" ]
 then
-    sampleID =$(basename "$f")
+    sampleID=$(basename "$f")
 
 elif [ "$uniqueDirectories" != "1" ]
 then
-    sampleID =$(dirname "$f")
+    sampleID=$(dirname "$f")
 else
     echo "we were unable to determine which files contained sample id in filename or directoryname"
     exit
@@ -56,8 +56,8 @@ awk '{print $1"|"$2}' longestIsoformID.txt > tmp.txt
 
 python /media/BigRAID/JeffTemp/Bioinformatics/FasTool_v2.2.py -i $f -o $sampleID.longestIsoform.fasta -id tmp.txt
 
-grep -c ">" Trinity.fasta.transdecoder.pep
-grep -c ">" longestIsoform.Trinity.fasta
+grep -c ">" $f
+grep -c ">" $sampleID.longestIsoform.Trinity.fasta
 rm tmp.txt
 
 # step 3 and 4
