@@ -102,11 +102,12 @@ def aspairs(file):
                     if wanted[id] in ensembl_id:
                         #print ensembl_id
                         with open(outName, "wb") as out:
-                            out.write(ensembl_id)
-                            out.write(sequence)
+                            out.write("")
 
-                        # with open(outName,"a") as out:
-                        #     out.write(ensembl_id)
+
+                        with open(outName,"a") as out:
+                             out.write(ensembl_id)
+                             out.write(sequence)
                         # with open(outName,"a") as out:
                         #     out.write(sequence)
 
