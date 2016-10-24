@@ -47,7 +47,7 @@ echo 'transcripts<-read.table("preppedHeader.txt")'>tmp.R
 echo 'aa <- transcripts[order(transcripts$V1, -abs(transcripts$V3) ), ]'>> tmp.R
 echo 'write.table( aa[ !duplicated(aa$V1), ] ,file="longestIsoformID.txt",row.names=F,col.names=F,quote=F)'>>tmp.R
 
-
+echo $sampleID
 Rscript tmp.R
 wc -l headers_of_interest.txt longestIsoformID.txt
 rm tmp.R
@@ -57,7 +57,7 @@ awk '{print $1"|"$2}' longestIsoformID.txt > tmp.txt
 python /media/BigRAID/JeffTemp/Bioinformatics/FasTool_v2.2.py -i $f -o $sampleID.longestIsoform.fasta -id tmp.txt
 
 grep -c ">" $f
-grep -c ">" $sampleID.longestIsoform.Trinity.fasta
+grep -c ">" $sampleID.longestIsoform.fasta
 rm tmp.txt
 
 # step 3 and 4
