@@ -101,8 +101,7 @@ def aspairs(file):
                 for id in range(len(wanted)):
                     if wanted[id] in ensembl_id:
                         #print ensembl_id
-                        with open(outName, "wb") as out:
-                            out.write("")
+
 
 
                         with open(outName,"a") as out:
@@ -116,6 +115,8 @@ def aspairs(file):
 
 
                     # print line_toAppend
+with open(outName, "wb") as out:
+    out.write("")
 if cysMotif_bool:
     with open(outName, "wb") as out:
         out.write("id\tCysCount\tCysMotif\tSeqLength\n")
