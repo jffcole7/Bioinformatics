@@ -83,11 +83,11 @@ def aspairs(file):
     for header, group in itertools.groupby(f, isheader):
         if header:
             line = group.next()
-            ensembl_id = line.strip()
+            ensembl_id = line.strip()+"\n"
             #print ensembl_id
             #ensembl_id = line[1:].split()[0]
         else:
-            sequence = ''.join(line.strip() for line in group)
+            sequence = ''.join(line.strip() for line in group)+"\n"
             yield ensembl_id, sequence
             # print sequence
             if cysMotif_bool:
@@ -100,12 +100,12 @@ def aspairs(file):
             elif subset_bool:
                 for id in range(len(wanted)):
                     if wanted[id] in ensembl_id:
-                        print ensembl_id
+                        #print ensembl_id
                         with open(outName,"a") as out:
                             out.write(ensembl_id)
                         with open(outName,"a") as out:
                             out.write(sequence)
-                        print sequence
+                        #print sequence
 
 
                     # print line_toAppend
