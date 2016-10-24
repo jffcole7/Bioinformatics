@@ -83,7 +83,9 @@ def aspairs(file):
     for header, group in itertools.groupby(f, isheader):
         if header:
             line = group.next()
-            ensembl_id = line[1:].split()[0]
+            ensembl_id = line
+            print ensembl_id
+            #ensembl_id = line[1:].split()[0]
         else:
             sequence = ''.join(line.strip() for line in group)
             yield ensembl_id, sequence
