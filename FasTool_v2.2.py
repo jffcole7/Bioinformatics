@@ -84,7 +84,7 @@ def aspairs(file):
         if header:
             line = group.next()
             ensembl_id = line
-            print ensembl_id
+            #print ensembl_id
             #ensembl_id = line[1:].split()[0]
         else:
             sequence = ''.join(line.strip() for line in group)
