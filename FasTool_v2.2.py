@@ -87,7 +87,7 @@ def aspairs(file):
             #print ensembl_id
             #ensembl_id = line[1:].split()[0]
         else:
-            sequence = ''.join(line.strip() for line in group)+"\n"
+            sequence = ''.join(line.strip() for line in group)
             yield ensembl_id, sequence
             # print sequence
             if cysMotif_bool:
@@ -101,10 +101,16 @@ def aspairs(file):
                 for id in range(len(wanted)):
                     if wanted[id] in ensembl_id:
                         #print ensembl_id
-                        with open(outName,"a") as out:
+                        with open(outName, "wb") as out:
                             out.write(ensembl_id)
-                        with open(outName,"a") as out:
                             out.write(sequence)
+
+                        # with open(outName,"a") as out:
+                        #     out.write(ensembl_id)
+                        # with open(outName,"a") as out:
+                        #     out.write(sequence)
+
+
                         #print sequence
 
 
